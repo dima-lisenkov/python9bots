@@ -22,7 +22,7 @@ async def start_new_game(messege: Message):
         
 async def player_turn(message: Message):
     await message.answer(f"{message.from_user.first_name},"
-                        f"  твой ход! Сколько возимешь конфет ?")
+                        f"  твой ход! Сколько возьмешь конфет ?")
 
 @dp.message_handler()
 async def take(message: Message):
@@ -34,7 +34,7 @@ async def take(message: Message):
                 Game.take_candies(take)
                 if await check_win(message, take, "player"):
                     return
-                await message.answer(f"{name} взял {take} конфет, и на столье осталось " 
+                await message.answer(f"{name} взял {take} конфет, и на столе осталось " 
                                      f"{Game.get_total()}. Ход бота...")
                 await bot_turn(message)
 
